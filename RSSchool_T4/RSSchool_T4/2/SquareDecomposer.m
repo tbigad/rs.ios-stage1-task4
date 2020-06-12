@@ -2,8 +2,9 @@
 
 @implementation SquareDecomposer
 - (NSArray <NSNumber*>*)decomposeNumber:(NSNumber*)number {
-    int initialNumber = [(NSNumber*) number intValue];
-    return [self decomposeNumberRec:initialNumber leftSpace:pow(initialNumber, 2)];
+    int initialNumber = [number intValue];
+    long leftSpace = powl(initialNumber, 2);
+    return [self decomposeNumberRec:initialNumber leftSpace:leftSpace];
 }
 
 - (NSMutableArray <NSNumber*>*)decomposeNumberRec:(int)initialNumber
@@ -14,7 +15,7 @@
         return res;
     }
     while (maximalClosestNumber > 0) {
-        int leftSpaceAfterSubtraction = leftSpace - pow(maximalClosestNumber, 2);
+        long leftSpaceAfterSubtraction = leftSpace - pow(maximalClosestNumber, 2);
         if (leftSpaceAfterSubtraction >= 0) {
             res = [self decomposeNumberRec:maximalClosestNumber
                                  leftSpace:leftSpaceAfterSubtraction];

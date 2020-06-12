@@ -53,8 +53,7 @@ NSString *printTree(NSMutableArray * tree){
                 if ([element isEqualToString:@"0"] &&
                     (i == sourceTree.count - 1 || ([sourceTree[i + 1][2 * j] isEqualToString:@"null"]))
                     ){
-                    NSError *err;
-                    NSMutableArray *newTree = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[NSArray class],[NSString class], nil] fromData:[NSKeyedArchiver archivedDataWithRootObject:sourceTree requiringSecureCoding:true error:&err] error:&err];
+                    NSMutableArray *newTree = [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:[NSArray class],[NSString class], nil] fromData:[NSKeyedArchiver archivedDataWithRootObject:sourceTree requiringSecureCoding:true error:nil] error:nil];
                     if (i == sourceTree.count - 1){
                         NSMutableArray *newLevel = [NSMutableArray new];
                         for (int u = 0; u < pow(2,sourceTree.count); u++){
